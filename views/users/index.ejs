@@ -1,0 +1,79 @@
+<% include ../include/header %>
+<div id="wrapper">
+    <% include ../include/nav %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <% include ../include/navbar %>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>用户数</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">8</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>文件数</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">10</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>客户数</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">200</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>文档数</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">80,600</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>财务报告</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="feed-activity-list">
+                                <% for(var i = 0;i < 10;i++){%>
+                                <div class="feed-element">
+                                    <div>
+                                        <a href="" class="col-lg-8">
+                                            2015年财务报告表
+                                        </a>
+                                        <small class="col-lg-4 text-right">
+                                            2015年12月22日
+                                        </small>
+                                    </div>
+                                </div>
+                                <%} %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../include/copy %>
+    </div>
+</div>
+
+<% include ../include/footer %>

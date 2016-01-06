@@ -1,0 +1,108 @@
+<% include ../include/header %>
+<div id="wrapper">
+    <% include ../include/nav %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <% include ../include/navbar %>
+        <% include ../include/contentTop %>
+
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>客户列表
+                                <small>分类，查找</small>
+                            </h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div id="toolbar" class="btn-group">
+                                <a href="javascript:;" class="btn btn-success" id="table-view">查看</a>
+                                <a href="/crm/add" class="btn btn-primary" id="table-add">添加</a>
+                                <a href="javascript:;" class="btn btn-default" id="table-edit">编辑</a>
+                                <a href="javascript:;" class="btn btn-danger" id="table-del">删除</a>
+                            </div>
+                            <table id="table"
+                                   data-toggle="table"
+                                   data-url="/crm/data"
+                                   data-click-to-select="true"
+                                   data-single-select="true"
+                                   data-search="true"
+                                   data-show-refresh="true"
+                                   data-show-columns="true"
+                                   data-pagination="true"
+                                   data-page-list="[20, 10]"
+                                   data-show-export="true"
+                                   data-toolbar="#toolbar">
+                                <thead>
+                                <tr>
+                                    <th data-checkbox="true"></th>
+                                    <th data-field="company" data-sortable="true">公司名称</th>
+                                    <th data-field="name">姓名</th>
+                                    <th data-field="contact">联系方式</th>
+                                    <th data-field="user">业务经理</th>
+                                    <th data-field="time">时间</th>
+                                </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../include/copy %>
+    </div>
+</div>
+</div>
+<!--bootstrap-table-->
+<link rel="stylesheet" href="/js/plugins/bootstrap-table/bootstrap-table.css">
+<script src="/js/plugins/bootstrap-table/bootstrap-table.js"></script>
+<script src="/js/plugins/bootstrap-table/tableExport.min.js"></script>
+<script src="/js/plugins/bootstrap-table/bootstrap-table-export.min.js"></script>
+<script src="/js/plugins/bootstrap-table/bootstrap-table-zh-CN.js"></script>
+
+<!--弹窗-->
+<link href="/js/plugins/layer/skin/layer.css" rel="stylesheet">
+<link href="/js/plugins/layer/skin/layer.ext.css" rel="stylesheet">
+<script src="/js/plugins/layer/layer.js"></script>
+<script src="/js/plugins/layer/extend/layer.ext.js"></script>
+
+<script>
+    $(document).ready(function () {
+        if ($('#table').length) {
+            var $table = $('#table');
+            $table.bootstrapTable({
+                showExport: true,
+                exportDataType: 'basic', // basic, all, selected
+                exportTypes: ['csv']
+            });
+
+            var $view = $('#table-view');
+            var $edit = $('#table-edit');
+            var $del = $('#table-del');
+
+            $table.on('check.bs.table', function (row, $element) {
+                $view.attr('href', '/crm/detail/' + $element._id);
+                $edit.attr('href', '/crm/edit/' + $element._id);
+                $del.attr('href', '/crm/del/' + $element._id);
+            })
+
+            $table.on('uncheck.bs.table', function () {
+                $view.attr('href', 'javascript:;');
+                $edit.attr('href', 'javascript:;');
+                $del.attr('href', 'javascript:;');
+            })
+
+            function tableCtrl() {
+                if ($table.bootstrapTable('getSelections').length == 0) {
+                    layer.msg('请选中数据');
+                }
+            }
+
+            //查看
+            $('#table-view,#table-edit,#table-del').on('click', function () {
+                tableCtrl();
+            })
+        }
+    })
+</script>
+<% include ../include/footer %>

@@ -1,0 +1,52 @@
+<% include ../include/header %>
+<div id="wrapper">
+    <% include ../include/nav %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <% include ../include/navbar %>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>财务报告</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h3 class="text-center">
+                                <%= data.title %>
+                                <small><%= data.user %></small>
+                            </h3>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="table table-bordered">
+                                <tr>
+                                    <%
+                                    for(var i = 0;i < data.content[0].length;i++){
+                                    %>
+                                    <th>
+                                        <%= data.content[0][i] %>
+                                    </th>
+                                    <%
+                                    }
+                                    %>
+                                </tr>
+
+                                <%
+                                for (var i = 1; i < data.content.length; i++) { %>
+                                <tr>
+                                    <% for(var head in data.content[0]){ %>
+                                    <td>
+                                        <%= data.content[i][head] %>
+                                    </td>
+                                    <% } %>
+                                </tr>
+                                <% }
+                                %>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../include/copy %>
+    </div>
+</div>
+
+<% include ../include/footer %>

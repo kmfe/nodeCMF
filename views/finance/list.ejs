@@ -1,0 +1,42 @@
+<% include ../include/header %>
+<div id="wrapper">
+    <% include ../include/nav %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <% include ../include/navbar %>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>财务报告</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="">
+                                <a href="/finance/add" class="btn btn-primary">
+                                    添加
+                                </a>
+                            </div>
+                            <div class="feed-activity-list">
+                                <% for(var i = 0;i < data.length;i++){ %>
+                                <div class="feed-element">
+                                    <div>
+                                        <a href="/finance/view/<%= data[i]._id%>" class="col-lg-8">
+                                            <%= data[i].title%>
+                                        </a>
+                                        <small class="col-lg-4 text-right">
+                                            <%= data[i].time%>
+                                        </small>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../include/copy %>
+    </div>
+</div>
+
+<% include ../include/footer %>

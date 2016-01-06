@@ -1,0 +1,88 @@
+<% include ../include/header %>
+<div id="wrapper">
+    <% include ../include/nav %>
+    <div id="page-wrapper" class="gray-bg dashbard-1">
+        <% include ../include/navbar %>
+        <% include ../include/contentTop %>
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>查看客户</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <dl class="dl-horizontal table-view-con">
+                                <dt>
+                                    公司
+                                </dt>
+                                <dd>
+                                    <%= client.company%>
+                                </dd>
+                                <dt>
+                                    职位
+                                </dt>
+                                <dd>
+                                    <%= client.position%>
+                                </dd>
+                                <dt>
+                                    联系方式
+                                </dt>
+                                <dd>
+                                    电话：<%= client.contact%>
+                                </dd>
+                                <dd>
+                                    QQ：<%= client.qq%>
+                                </dd>
+                                <dd>
+                                    Email：<%= client.email%>
+                                </dd>
+                                <dt>
+                                    客户意向
+                                </dt>
+                                <dd>
+                                    <%=client.intention%>
+                                </dd>
+                                <dt>
+                                    客户资料
+                                </dt>
+                                <dd id="layer-photos" class="layer-photos">
+                                    <%for(var i=0;i<client.data.length;i++){
+                                        %>
+                                        <img  layer-pid="" layer-src="<%= client.data[i]%>" src="<%= client.data[i]%>" alt="">
+                                    <%
+                                    }%>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <% include ../include/copy %>
+    </div>
+</div>
+<!--layer-->
+<link href="/js/plugins/layer/skin/layer.css" rel="stylesheet">
+<link href="/js/plugins/layer/skin/layer.ext.css" rel="stylesheet">
+
+<script src="/js/plugins/layer/layer.js"></script>
+<script src="/js/plugins/layer/extend/layer.ext.js"></script>
+
+<script>
+    if($('#layer-photos').length !=0){
+        layer.ready(function () {
+            layer.photos({
+                shift: 0,
+                move: false,
+                area: 'auto',
+                maxWidth: 950,
+                photos: '#layer-photos'
+            });
+        });
+    }
+</script>
+<% include ../include/footer %>
+
+
+
